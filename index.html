@@ -202,7 +202,7 @@
     <h2 id="modalTitle">Nuovo articolo</h2>
     <div class="field"><label>Nome prodotto</label><input type="text" id="fName" placeholder="es. Mario Kart Switch..."></div>
     <div class="field"><label>Categoria</label>
-      <select id="fCat"><option value="">— Seleziona —</option><option>Switch</option><option>DS</option><option>GameCube</option><option>Wii</option></select>
+      <select id="fCat"><option value="">— Seleziona —</option><option>Switch</option><option>DS</option><option>3DS</option><option>GBA</option><option>GameCube</option><option>Wii</option></select>
     </div>
     <div class="row2">
       <div class="field"><label>Data acquisto</label><input type="date" id="fDateBuy"></div>
@@ -384,7 +384,7 @@
   // ── Helpers ──────────────────────────────────────────
   function fmt(n) { return n != null ? '€' + parseFloat(n).toFixed(2) : '—'; }
   function fmtDate(d) { if (!d) return ''; const p = d.split('-'); return p[2]+'/'+p[1]+'/'+p[0]; }
-  const CC = { 'Switch':'#ff5c2a','DS':'#4a9eff','GameCube':'#3dcf8e','Wii':'#a855f7','default':'#6b6b7a' };
+  const CC = { 'Switch':'#ff5c2a','DS':'#4a9eff','3DS':'#f59e0b','GBA':'#ec4899','GameCube':'#3dcf8e','Wii':'#a855f7','default':'#6b6b7a' };
 
   function toggleBreakdown(bdId, hintId) {
     const bd = document.getElementById(bdId), hint = document.getElementById(hintId);
@@ -399,7 +399,7 @@
     const totalBuy = items.reduce((s,i) => s+(i.buy||0), 0);
     const totalSell = sold.reduce((s,i) => s+(i.sell||0), 0);
     const profit = totalSell - sold.reduce((s,i) => s+(i.buy||0), 0);
-    const cats = ['Switch','DS','GameCube','Wii'];
+    const cats = ['Switch','DS','3DS','GBA','GameCube','Wii'];
     const cc = {}, sc = {};
     cats.forEach(c => { cc[c] = items.filter(i=>i.category===c).length; sc[c] = items.filter(i=>i.category===c&&i.status!=='sold').length; });
     const mc = Math.max(...Object.values(cc),1), ms = Math.max(...Object.values(sc),1);
